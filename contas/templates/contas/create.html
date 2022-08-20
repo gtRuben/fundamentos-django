@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud</title>
+
+    <style>
+
+    input[type=button], input[type=submit], input[type=reset] {
+        background-color: #6b86e6;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+        
+    </style>
+
+</head>
+<body>
+
+    <h1>CREATE do banco</h1>
+
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <input type="submit" value="Salvar">
+    </form>
+
+    <form action="{% url 'read' %}"><input type="submit" value="Back to read" /></form>
+
+    <!--<a href="">Back to read</a>-->
+    
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cRud</title>
+
+    <style>
+
+    table {
+        border-collapse: collapse;
+        width: 70%;
+    }
+
+    th, td {
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #6b86e6;
+        color: white;
+    }
+
+    input[type=button], input[type=submit], input[type=reset] {
+        background-color: #6b86e6;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    </style>
+    
+</head>
+<body>
+
+    <h1>READ do banco</h1>
+
+    <table>
+        <tr>
+            <th>Categoria</th>
+            <th>Título</th>
+            <th>Valor</th>
+            <th>Data</th>
+        </tr>
+
+        {% for transacao in transacoes %}
+            <tr>
+                <td>{{ transacao.categoria }}</td>
+                <td><a href="{% url 'update' transacao.id %}"><b>{{ transacao.titulo }}</b></a></td>
+                <td>{{ transacao.valor }}</td>
+                <td>{{ transacao.data }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <br><form action="{% url 'create' %}"><input type="submit" value="Create" /></form>
+
+    <!--<a href="{% url 'create' %}">Create</a>-->
+    
+</body>
+</html>
